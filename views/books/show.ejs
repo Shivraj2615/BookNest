@@ -1,92 +1,110 @@
 <% layout('layouts/boilerplate') -%>
 
 <body>
-  <div class="container mt-4 col offset-2">
-    <img
-      src="<%= Book.image %>"
-      class="img-fluid mb-3"
-      style="max-height: 300px; border: 1px solid #ccc; padding: 5px"
-      alt="Book Cover"
-    />
-    <p>Title: <%= Book.title %></p>
-    <p>Author: <%= Book.author %></p>
-    <p>Description: <%= Book.description %></p>
-    <p>Price: ₹ <%= Book.price %></p>
-    <p>Uploaded by: <%= Book.owner ? Book.owner.email : "Unknown User" %></p>
+  <div class="container mt-5" style="max-width: 80%">
+    <div class="row align-items-start book-show">
+      <!-- Left Column: Image -->
+      <div class="col-md-5 text-center">
+        <img
+          src="<%= Book.image %>"
+          alt="Book Cover"
+          class="img-fluid shadow-sm rounded book-image"
+        />
+      </div>
 
-    <a href="/books/<%= Book._id %>/edit" class="btn btn-warning">Edit</a>
-    <form
-      method="POST"
-      action="/books/<%= Book._id %>/delete?_method=DELETE"
-      style="display: inline"
-    >
-      <button class="btn btn-danger">Delete</button>
-    </form>
-    <a href="/books" class="btn btn-outline-secondary">Back</a>
-  </div>
+      <!-- Right Column: Info -->
+      <div class="col-md-7 book-info">
+        <h2 class="mb-3"><%= Book.title %></h2>
+        <p><strong>Author:</strong> <%= Book.author %></p>
+        <p><strong>Description:</strong> <%= Book.description %></p>
+        <p><strong>Price:</strong> ₹ <%= Book.price %></p>
+        <p>
+          <strong>Uploaded by:</strong> <%= Book.owner ? Book.owner.email :
+          "Unknown User" %>
+        </p>
 
-  <!-- Review Adding -->
-  <% if (currentUser) { %>
-  <div class="col offset-2 mt-4" style="width: 700px">
-    <h5 class="mb-2">Leave a Review:</h5>
-    <div style="border: 1px solid gray" class="p-3">
+        <div class="mt-4">
+          <a href="/books/<%= Book._id %>/edit" class="btn btn-warning me-2"
+            >Edit</a
+          >
+          <form
+            method="POST"
+            action="/books/<%= Book._id %>/delete?_method=DELETE"
+            style="display: inline"
+          >
+            <button class="btn btn-danger me-2">Delete</button>
+          </form>
+          <a href="/books" class="btn btn-outline-secondary">Back</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Form Section -->
+    <% if (currentUser) { %>
+    <div class="review-form mt-5">
+      <h4 class="mb-3">Leave a Review</h4>
       <form
         action="/books/<%= Book._id %>/reviews"
         method="POST"
-        class="review-form needs-validation"
+        class="needs-validation"
         novalidate
       >
-        <div class="mb-2">
-          <label for="rating" class="form-label">Rating:</label>
-          <input
-            type="range"
-            class="form-range"
-            name="review[rating]"
-            min="0"
-            max="5"
-          />
-        </div>
+        <label for="rating" class="form-label">Rating:</label>
+        <input
+          type="range"
+          class="form-range"
+          name="review[rating]"
+          min="0"
+          max="5"
+        />
 
         <div class="mb-3">
-          <label for="comment" class="form-label">Your Comment:</label>
+          <label for="comment" class="form-label">Comment:</label>
           <textarea
             class="form-control"
             name="review[comment]"
             rows="3"
-            placeholder="Add some comment..."
+            placeholder="Add your review..."
             required
           ></textarea>
-          <div class="valid-feedback">Looks good!</div>
-          <div class="invalid-feedback">Please Enter Some Comment</div>
+          <div class="invalid-feedback">Please enter a comment</div>
         </div>
 
         <button class="btn btn-primary">Add Review</button>
       </form>
     </div>
-  </div>
-  <% } else { %> 
-  <div class="col offset-2 mt-4">
-    <h3>Please Login to add Review</h3>
-  </div>
-  <% } %>
-  
-  <!-- Display Review -->
-  <div class="col offset-2 mt-4 review-section">
-    <h4>All Reviews</h4>
-    <% if (Book.reviews.length === 0) { %>
-    <p>No reviews yet.</p>
-    <% } else { %> <% for (review of Book.reviews) { %>
-    <div class="review-box mb-3 col">
-      <p><strong>By: </strong><%= review.author ? review.author.email : "Anonymous" %></p>
-      <p>Rating: <%= review.rating %>⭐</p>
-      <p>Comment: <%= review.comment %></p>
-      <form
-        method="POST"
-        action="/books/<%= Book._id %>/reviews/<%= review._id %>?_method=DELETE"
-      >
-        <button class="btn btn-danger">Delete</button>
-      </form>
+    <% } else { %>
+    <div class="mt-5">
+      <h5 class="text-muted">Please login to add a review</h5>
     </div>
-    <% } %> <% } %>
+    <% } %>
+    <!-- Review Display Section -->
+    <div class="review-section mt-5">
+      <h4>All Reviews</h4>
+      <% if (Book.reviews.length === 0) { %>
+      <p class="text-muted">No reviews yet.</p>
+      <% } else { %>
+      <div class="row g-4">
+        <% for (let review of Book.reviews) { %>
+        <div class="col-md-6">
+          <div class="review-box h-100">
+            <p>
+              <strong>By:</strong> <%= review.author ? review.author.email :
+              "Anonymous" %>
+            </p>
+            <p><strong>Rating:</strong> <%= review.rating %>⭐</p>
+            <p><%= review.comment %></p>
+            <form
+              method="POST"
+              action="/books/<%= Book._id %>/reviews/<%= review._id %>?_method=DELETE"
+            >
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
   </div>
 </body>

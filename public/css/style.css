@@ -1,62 +1,292 @@
 body {
+  padding-top: 70px;
   background-color: #f8f9fa;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+/* ========================
+   NAVBAR STYLING
+======================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #2c3e50 !important;
+  letter-spacing: 0.5px;
+}
+
+.navbar-brand:hover {
+  color: #0d6efd !important;
+}
+
+.nav-link {
+  color: #2c3e50 !important;
+  font-weight: 500;
+  margin-right: 15px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box form {
+  display: flex;
+  gap: 8px;
+}
+
+.search-box .search {
+  width: 180px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+}
+
+.search-box .search:focus {
+  border-color: #0d6efd;
+  outline: none;
+  box-shadow: 0 0 4px rgba(13, 110, 253, 0.4);
+}
+
+.btn-search {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  transition: background 0.2s ease;
+}
+
+.btn-search:hover {
+  background-color: #0b5ed7;
+  color: whitesmoke;
+}
+
+/* === Book Card Styling === */
 .book-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: 0.2s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .book-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
+/* === Book Image Styling (Bootstrap card-img-top) === */
 .book-img {
-  height: 220px;
+  width: 100%;
+  height: 250px;
   object-fit: contain;
+  object-position: center;
   background-color: #fff;
   padding: 8px;
   border-bottom: 1px solid #eee;
 }
 
-.card-title {
-  font-size: 1.05rem;
+/* === Price & Title === */
+.book-card .card-title {
   font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
 }
 
-.card-text.price {
-  color: green;
-  font-weight: bold;
+.book-card .price {
+  color: blue;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
-.img {
+/* === Button === */
+.book-card .btn-primary {
+  border-radius: 8px;
+}
+
+.book-show {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+}
+
+.book-image {
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
   border: 1px solid #ddd;
-  padding: 5px;
-  background-color: #fdfdfd;
-  border-radius: 6px;
 }
 
-/* Review */
-.review-form textarea {
-  resize: vertical;
+.book-info {
+  padding-left: 25px;
 }
 
-.review-form button {
-  margin-top: 5px;
+.book-info h2 {
+  font-weight: 600;
+  color: #222;
 }
 
-.review-section {
-  margin-top: 20px;
-  padding: 10px;
+.book-info p {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.review-form {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 25px;
+  border: 1px solid #ddd;
 }
 
 .review-box {
-  background-color: #f9f9f9;
-  border: 1px solid gray;
-  padding: 10px;
-  border-radius: 4px;
-  width: 500px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  transition: all 0.2s ease-in-out;
+  height: 100%;
 }
+
+.review-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Edit Page Styling ---------- */
+.new-form-page {
+  width: 75%;
+  max-width: 700px;
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.new-form-page h2 {
+  text-align: center;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 1.5rem;
+}
+
+.new-form-page .form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+.new-form-page .form-control {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: none;
+  transition: 0.2s ease-in-out;
+}
+
+.new-form-page .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+.new-form-page button {
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 500;
+}
+
+.new-form-page .btn-dark {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.new-form-page .btn-dark:hover {
+  background-color: #0b5ed7;
+}
+
+.new-form-page .btn-outline-secondary {
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+/* ---------- Login & Register Page Styling ---------- */
+.auth-page {
+  width: 75%;
+  max-width: 400px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.auth-page h2 {
+  text-align: center;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 1.5rem;
+}
+
+.auth-page .form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+.auth-page .form-control {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: none;
+  transition: 0.2s ease-in-out;
+}
+
+.auth-page .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+.auth-page button {
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 500;
+}
+
+.auth-page .btn-primary {
+  background-color: #0d6efd;
+  border: none;
+  width: 100%;
+}
+
+.auth-page .btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.auth-page p {
+  text-align: center;
+  margin-top: 1rem;
+  color: #555;
+}
+
+/* Consistent background */
+body {
+  background-color: #f8f9fa;
+}
+
+
+
