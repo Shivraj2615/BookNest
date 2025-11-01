@@ -1,0 +1,84 @@
+<% layout('layouts/boilerplate') -%>
+
+<body>
+  <div class="container mt-4 new-form-page">
+    <h2 class="text-center mb-4">Add New Book</h2>
+
+    <form action="/books" method="POST" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="title" class="form-label">Enter Title</label>
+        <input type="text" name="book[title]" class="form-control" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please Enter Book Title</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="author" class="form-label">Enter Author</label>
+        <input type="text" name="book[author]" class="form-control" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please Enter Author Name</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Enter Description</label>
+        <textarea name="book[description]" id="description" class="form-control" required></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please Enter Description</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Enter Image Link</label>
+        <input type="text" name="book[image]" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Enter Price</label>
+        <input type="number" name="book[price]" class="form-control" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please Enter Price</div>
+      </div>
+
+      <button class="btn btn-primary mt-2">Add</button>
+      <a href="/books" class="btn btn-outline-secondary mt-2 ms-2">Cancel</a>
+    </form>
+  </div>
+</body>
+
+<style>
+    /* =============================
+   Styling for New Book Page Only
+   ============================= */
+
+.new-form-page {
+  max-width: 600px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+}
+
+.new-form-page h2 {
+  font-size: 1.7rem;
+  color: #333;
+}
+
+.new-form-page .form-control {
+  font-size: 1rem;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.new-form-page .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: none;
+}
+
+.new-form-page .valid-feedback,
+.new-form-page .invalid-feedback {
+  font-size: 0.9rem;
+  margin-top: -5px;
+}
+
+</style>

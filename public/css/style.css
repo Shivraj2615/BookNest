@@ -1,0 +1,62 @@
+body {
+  background-color: #f8f9fa;
+  font-family: sans-serif;
+}
+
+.book-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: 0.2s ease-in-out;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.book-img {
+  height: 220px;
+  object-fit: contain;
+  background-color: #fff;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card-text.price {
+  color: green;
+  font-weight: bold;
+}
+
+.img {
+  border: 1px solid #ddd;
+  padding: 5px;
+  background-color: #fdfdfd;
+  border-radius: 6px;
+}
+
+/* Review */
+.review-form textarea {
+  resize: vertical;
+}
+
+.review-form button {
+  margin-top: 5px;
+}
+
+.review-section {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.review-box {
+  background-color: #f9f9f9;
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 4px;
+  width: 500px;
+}

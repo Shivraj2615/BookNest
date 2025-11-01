@@ -1,0 +1,103 @@
+<% layout('layouts/boilerplate') -%>
+
+<body>
+  <div class="container new-form-page mt-4">
+    <h2 class="mb-4">Edit Book</h2>
+
+    <form method="POST" action="/books/<%= book._id %>?_method=PUT" class="needs-validation" novalidate>
+      
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="book[title]" id="title" value="<%= book.title %>" class="form-control" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter book title.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" name="book[author]" id="author" value="<%= book.author %>" class="form-control" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter author name.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="book[description]" id="description" class="form-control" required><%= book.description %></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter some description.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image Link</label>
+        <input type="text" name="book[image]" id="image" value="<%= book.image %>" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" name="book[price]" id="price" value="<%= book.price %>" class="form-control" required min="1">
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter price.</div>
+      </div>
+
+      <button type="submit" class="btn btn-dark">Update</button>
+      <a href="/books/<%= book._id %>" class="btn btn-outline-secondary">Cancel</a>
+
+    </form>
+  </div>
+</body>
+
+<style>
+    /* =============================
+   Styles for New Book Page Only
+   ============================= */
+
+.new-form-page {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.new-form-page h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.7rem;
+  color: #222;
+}
+
+.new-form-page .form-label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.new-form-page .form-control {
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.new-form-page .form-control:focus {
+  border-color: #198754;
+  box-shadow: none;
+}
+
+.new-form-page .valid-feedback,
+.new-form-page .invalid-feedback {
+  font-size: 0.9rem;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.new-form-page .btn-success {
+  padding: 8px 16px;
+}
+
+.new-form-page .btn-outline-secondary {
+  margin-left: 10px;
+  padding: 8px 16px;
+}
+</style>

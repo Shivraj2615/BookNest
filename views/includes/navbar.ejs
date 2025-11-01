@@ -1,0 +1,97 @@
+<nav
+  class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top custom-navbar"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/books">BookNest</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="btn btn-primary me-4" href="/books">Explore</a> 
+        <a class="btn btn-primary me-4" href="/books/new">Add New Book</a>
+      </div>
+
+      <div class="ms-auto mt-3 search-box">
+        <form class="d-flex" role="search" method="get" action="/books">
+          <input
+            class="form-control me-2 search"
+            type="search"
+            placeholder="Search Book"
+            name="search"
+          />
+          <button class="btn btn-search" type="submit">
+            Search <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <% if (!currentUser) { %>
+        <a class="btn btn-primary me-4" href="/books/login">Login</a>
+        <a class="btn btn-primary me-4" href="/books/register">Register</a>
+        <% } else { %>
+        <a class="btn btn-danger me-4" href="/books/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* =============================
+   Navbar Styling
+   ============================= */
+
+  .custom-navbar {
+    background-color: #f8f9fa !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+  }
+
+  .custom-navbar .navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #0d6efd;
+  }
+
+  .custom-navbar .nav-link {
+    font-size: 1rem;
+    color: #495057;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+  }
+
+  .custom-navbar .nav-link:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+  }
+
+  /* Search box */
+  .search-box .form-control {
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+  }
+
+  .search-box .btn-search {
+    border-radius: 20px;
+    background-color: #0d6efd;
+    color: white;
+    padding: 6px 16px;
+    font-size: 0.95rem;
+    border: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .search-box .btn-search:hover {
+    background-color: #084298;
+  }
+</style>
