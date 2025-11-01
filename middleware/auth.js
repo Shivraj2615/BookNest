@@ -22,7 +22,9 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 module.exports.isBookOwner = async (req, res, next) => {
   const { id } = req.params;
+  
   const book = await Books.findById(id);
+  
   if (!book.owner.equals(req.user.id)) {
     return res.send("You do not have permission to do that!");
   }
