@@ -22,7 +22,7 @@ export default function EditBookPage() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await api.get(`/books/${id}`, {});
+        const res = await api.get(`/books/${id}`);
         // console.log(res.data);
         setFormData({
           title: res.data.title,
@@ -52,8 +52,6 @@ export default function EditBookPage() {
       const res = await api.put(`/books/${id}`, formData);
       toast.success("Book updated successfully");
       navigate("/admin/books");
-      // console.log(res.data);
-      setFormData(formObj);
     } catch (error) {
       console.error(error);
       toast.error("Some Error Occurred");

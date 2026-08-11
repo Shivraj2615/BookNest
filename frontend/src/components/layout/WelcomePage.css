@@ -1,42 +1,131 @@
 .welcome {
+  width: 100%;
   min-height: calc(100vh - 120px);
-  background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)),
-    url("https://images.unsplash.com/photo-1512820790803-83ca734da794")
-      center/cover no-repeat;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)),
+    url("https://images.unsplash.com/photo-1512820790803-83ca734da794") center /
+      cover no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 40px 20px;
+
   color: #ffffff;
 }
 
 .welcome-content {
-  text-align: center;
+  width: 100%;
   max-width: 600px;
+
   padding: 20px;
+
+  text-align: center;
+
+  box-sizing: border-box;
 }
 
 .welcome-content h1 {
+  margin: 0 0 15px;
+
   font-size: 3rem;
-  margin-bottom: 15px;
+  line-height: 1.2;
 }
 
 .welcome-content p {
+  margin: 0 0 25px;
+
   font-size: 1.1rem;
-  margin-bottom: 25px;
+  line-height: 1.6;
+
   color: #f1f2f6;
 }
 
 .welcome-btn {
   display: inline-block;
+
   padding: 12px 28px;
+
   background-color: #e67e22;
   color: #ffffff;
+
   text-decoration: none;
+
   border-radius: 4px;
+
   font-weight: 600;
-  transition: background-color 0.2s ease;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .welcome-btn:hover {
   background-color: #cf6d17;
+  transform: translateY(-2px);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .welcome {
+    min-height: calc(100vh - 130px);
+    padding: 30px 16px;
+  }
+
+  .welcome-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .welcome-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .welcome {
+    min-height: calc(100vh - 130px);
+    padding: 24px 12px;
+
+    background-position: center;
+  }
+
+  .welcome-content {
+    padding: 10px;
+  }
+
+  .welcome-content h1 {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  .welcome-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+
+  .welcome-btn {
+    width: 100%;
+    max-width: 240px;
+
+    box-sizing: border-box;
+
+    padding: 12px 20px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .welcome-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .welcome-content p {
+    font-size: 0.9rem;
+  }
 }

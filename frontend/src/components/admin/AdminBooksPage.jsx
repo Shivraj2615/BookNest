@@ -18,6 +18,7 @@ export default function AdminBooksPage() {
         toast.error("Some Error Occurred");
       }
     }
+
     fetchBooks();
   }, []);
 
@@ -26,10 +27,17 @@ export default function AdminBooksPage() {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this book?")) return;
+    if (!window.confirm("Are you sure you want to delete this book?")) {
+      return;
+    }
+
     try {
       await api.delete(`/books/${id}`);
-      setBooks([...books.filter((book) => book._id !== id)]);
+
+      setBooks((currentBooks) =>
+        currentBooks.filter((book) => book._id !== id),
+      );
+
       toast.success("Book Deleted Successfully");
     } catch (error) {
       console.error(error);
@@ -40,6 +48,7 @@ export default function AdminBooksPage() {
   return (
     <div className="admin-books-page">
       <h2>All Books List</h2>
+
       <div className="table-card">
         <table className="admin-books-table">
           <thead>
@@ -51,37 +60,51 @@ export default function AdminBooksPage() {
               <th>Actions</th>
             </tr>
           </thead>
+
           <tbody>
             {books.map((book) => (
               <tr key={book._id}>
-                <td>
+                <td data-label="Image">
                   <img
                     src={book.image}
                     alt={book.title}
                     className="book-thumb"
                   />
                 </td>
-                <td>{book.title}</td>
-                <td>₹ {book.price}</td>
-                <td>{book.quantity}</td>
-                <td>
-                  <button
-                    className="edit-btn"
-                    onClick={() => handleEdit(book._id)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDelete(book._id)}
-                  >
-                    Delete
-                  </button>
+
+                <td data-label="Title" className="book-title-cell">
+                  {book.title}
+                </td>
+
+                <td data-label="Price">₹ {book.price}</td>
+
+                <td data-label="Quantity">{book.quantity}</td>
+
+                <td data-label="Actions">
+                  <div className="book-actions">
+                    <button
+                      className="edit-btn"
+                      onClick={() => handleEdit(book._id)}
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleDelete(book._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {books.length === 0 && (
+          <p className="no-books-message">No books available.</p>
+        )}
       </div>
     </div>
   );

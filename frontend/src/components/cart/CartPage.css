@@ -1,41 +1,77 @@
-/* CartPage container */
 .cart-page {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+
+  width: 100%;
   max-width: 1000px;
+
   margin: 0 auto;
+  padding: 24px 20px;
+
+  box-sizing: border-box;
 }
 
-/* Container for all cart items */
+/* Cart items */
 .cart-items {
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  min-width: 0;
 }
 
-/* Message for loading or empty cart */
+/* Empty cart */
 .cart-message {
+  margin: 50px 20px;
+
   text-align: center;
+
   font-size: 1.2rem;
+  font-weight: 500;
+
   color: #555;
-  margin-top: 50px;
 }
 
-/* Optional: If you want cart items and summary side by side on larger screens */
+/* Loading state */
+.cart-loading {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Desktop / tablet */
 @media (min-width: 768px) {
   .cart-page {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+    display: grid;
 
-  .cart-items {
-    flex: 3; /* takes most of the width */
+    grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
+
+    align-items: start;
+
+    gap: 24px;
   }
 
   .cart-summary {
-    flex: 1; /* summary on the side */
-    margin-left: 20px;
+    position: sticky;
+    top: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .cart-page {
+    padding: 20px 12px;
+    gap: 16px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .cart-page {
+    padding: 16px 10px;
   }
 }

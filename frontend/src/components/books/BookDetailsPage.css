@@ -1,91 +1,129 @@
-/* Page container */
 .book-details-page {
-  max-width: 900px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+
   margin: 40px auto;
-  padding: 20px;
+  padding: 0 20px;
 }
 
-/* Card container */
-.book-card {
+/* Details card */
+.book-details-card {
   display: flex;
-  gap: 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  flex-wrap: wrap; /* stack on small screens */
   align-items: flex-start;
-  transition: transform 0.2s ease;
+
+  gap: 32px;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 24px;
+
+  background-color: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.book-card:hover {
-  transform: translateY(-4px);
-}
-
-/* Left: Book image */
+/* Book image */
 .book-image {
-  flex: 0 0 250px;
-  max-width: 30%;
+  flex: 0 0 280px;
+  width: 280px;
 }
 
 .book-image img {
+  display: block;
+
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  aspect-ratio: 2 / 3;
+
   object-fit: cover;
+
+  border-radius: 8px;
 }
 
-/* Right: Book info and buttons */
+/* Book information */
 .book-info {
-  flex: 1 1 0;
+  flex: 1;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Book details */
 .book-title {
-  font-size: 1.8rem;
   margin: 0;
+
+  font-size: 2rem;
+  line-height: 1.25;
+
+  color: #2c3e50;
+
+  overflow-wrap: anywhere;
 }
 
 .book-author {
+  margin: 0;
+
   font-size: 1rem;
+
   color: #555;
 }
 
 .book-price {
-  font-size: 1.2rem;
+  margin: 4px 0 0;
+
+  font-size: 1.3rem;
   font-weight: bold;
+
   color: #111;
 }
 
 .book-description {
-  margin-top: 10px;
+  margin: 8px 0 0;
+
   color: #333;
-  line-height: 1.5;
+
+  line-height: 1.6;
 }
 
 /* Buttons */
 .book-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 15px;
   flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 12px;
 }
 
 .btn {
+  min-height: 42px;
+
   padding: 10px 16px;
+
   border: none;
   border-radius: 6px;
+
   cursor: pointer;
+
+  font-size: 0.95rem;
   font-weight: 500;
-  transition: all 0.2s ease-in-out;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
 }
 
 .btn-cart {
   background-color: #1e40af;
-  color: #fff;
+  color: #ffffff;
 }
 
 .btn-cart:hover {
@@ -94,7 +132,11 @@
 
 .btn-wishlist {
   background-color: #f97316;
-  color: #fff;
+  color: #ffffff;
+}
+
+.btn-wishlist:hover:not(:disabled) {
+  background-color: #ea580c;
 }
 
 .btn-wishlist.in-wishlist {
@@ -102,23 +144,92 @@
   cursor: default;
 }
 
-.btn-wishlist:hover:not(.in-wishlist) {
-  background-color: #ea580c;
+/* Tablet */
+@media (max-width: 768px) {
+  .book-details-page {
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  .book-details-card {
+    gap: 24px;
+    padding: 20px;
+  }
+
+  .book-image {
+    flex: 0 0 220px;
+    width: 220px;
+  }
+
+  .book-title {
+    font-size: 1.7rem;
+  }
 }
 
-/* Responsive: stack image and info on small screens */
-@media (max-width: 768px) {
-  .book-card {
+/* Mobile */
+@media (max-width: 600px) {
+  .book-details-page {
+    margin: 16px auto;
+    padding: 0 12px;
+  }
+
+  .book-details-card {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+
+    gap: 20px;
+
+    padding: 16px;
+
+    border-radius: 8px;
+  }
+
+  .book-image {
+    width: min(70%, 240px);
+
+    flex: none;
+
+    margin: 0 auto;
   }
 
   .book-info {
-    flex: 1 1 100%;
-    text-align: center;
+    text-align: left;
+  }
+
+  .book-title {
+    font-size: 1.5rem;
+  }
+
+  .book-description {
+    font-size: 0.95rem;
   }
 
   .book-actions {
-    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .book-details-page {
+    padding: 0 10px;
+  }
+
+  .book-details-card {
+    padding: 12px;
+  }
+
+  .book-image {
+    width: min(75%, 210px);
+  }
+
+  .book-title {
+    font-size: 1.35rem;
   }
 }

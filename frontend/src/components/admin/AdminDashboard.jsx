@@ -7,21 +7,25 @@ export default function AdminDashboard() {
 
   return (
     <div className="admin-dashboard">
-      <h2>Admin Dashboard</h2>
+      <div className="dashboard-header">
+        <h2>Admin Dashboard</h2>
 
-      <button
-        className="add-book-btn"
-        onClick={() => navigate("/admin/books/add")}
-      >
-        Add New Book
-      </button>
+        <div className="dashboard-actions">
+          <button
+            className="add-book-btn"
+            onClick={() => navigate("/admin/books/add")}
+          >
+            Add New Book
+          </button>
 
-      <button
-        className="view-orders"
-        onClick={() => navigate("/admin/orders")}
-      >
-        View Orders
-      </button>
+          <button
+            className="view-orders"
+            onClick={() => navigate("/admin/orders")}
+          >
+            View Orders
+          </button>
+        </div>
+      </div>
 
       <AdminBooksPage />
     </div>

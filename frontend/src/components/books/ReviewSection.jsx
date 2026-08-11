@@ -48,6 +48,7 @@ export default function ReviewSection({ book, setBook, onProtectedAction }) {
         </select>
 
         <textarea
+          rows="4"
           placeholder="Write your review..."
           value={reviewData.comment}
           onChange={(e) =>
@@ -60,7 +61,7 @@ export default function ReviewSection({ book, setBook, onProtectedAction }) {
 
       {/* Reviews List */}
       <div className="reviews-list">
-        {book.reviews.length === 0 ? (
+        {!book.reviews || book.reviews.length === 0 ? (
           <p>No reviews yet.</p>
         ) : (
           book.reviews.map((review, index) => (

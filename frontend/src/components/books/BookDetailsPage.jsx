@@ -47,7 +47,7 @@ export default function BookDetailsPage() {
 
   return (
     <div className="book-details-page">
-      <div className="book-card">
+      <div className="book-details-card">
         {/* Left: Image */}
         <div className="book-image">
           <img src={book.image} alt={book.title} />
@@ -58,6 +58,7 @@ export default function BookDetailsPage() {
           <h1 className="book-title">{book.title}</h1>
           <p className="book-author">by {book.author || "Unknown Author"}</p>
           <p className="book-price">₹ {book.price}</p>
+
           <p className="book-description">{book.description}</p>
 
           <div className="book-actions">

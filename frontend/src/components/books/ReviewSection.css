@@ -1,79 +1,124 @@
-/* Reviews Section */
 .book-reviews-section {
-  max-width: 1200px;
-  margin: 40px auto 0;
-  padding: 20px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+
+  margin: 32px auto 0;
+  padding: 24px;
+
   background: #ffffff;
+
   border-radius: 10px;
+
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .book-reviews-section h3 {
+  margin: 0 0 18px;
+
   font-size: 1.4rem;
   color: #2c3e50;
-  margin-bottom: 15px;
 }
 
-/* Review Form */
+/* =========================
+   Review Form
+========================= */
+
 .review-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 25px;
+
+  margin-bottom: 28px;
 }
 
 .review-form select,
 .review-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+
   padding: 10px 12px;
+
   border-radius: 6px;
   border: 1px solid #ced4da;
+
+  font-family: inherit;
   font-size: 0.9rem;
+
   outline: none;
 }
 
 .review-form select:focus,
 .review-form textarea:focus {
   border-color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
 }
 
 .review-form textarea {
-  resize: none;
-  min-height: 90px;
+  min-height: 100px;
+
+  resize: vertical;
+
+  line-height: 1.5;
 }
 
 .review-form button {
   align-self: flex-start;
-  padding: 8px 18px;
+
+  min-height: 42px;
+
+  padding: 9px 18px;
+
   background-color: #0d6efd;
   color: #ffffff;
+
   border: none;
   border-radius: 6px;
+
   font-size: 0.9rem;
+  font-weight: 500;
+
   cursor: pointer;
-  transition: background-color 0.2s ease;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .review-form button:hover {
   background-color: #0b5ed7;
+  transform: translateY(-1px);
 }
 
-/* Reviews List */
+/* =========================
+   Reviews List
+========================= */
+
 .reviews-list {
   display: flex;
   flex-direction: column;
+
   gap: 15px;
 }
 
 .review-item {
-  padding: 12px 15px;
+  padding: 14px 15px;
+
   border-radius: 8px;
+
   background-color: #f8f9fa;
+
   border: 1px solid #e9ecef;
+
+  overflow-wrap: anywhere;
 }
 
 .review-item p {
   margin: 4px 0;
+
   font-size: 0.9rem;
+  line-height: 1.5;
+
   color: #343a40;
 }
 
@@ -82,6 +127,59 @@
 }
 
 .review-item span {
+  display: block;
+
+  margin-top: 8px;
+
   font-size: 0.75rem;
   color: #6c757d;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+  .book-reviews-section {
+    margin-top: 20px;
+    padding: 16px;
+
+    border-radius: 8px;
+  }
+
+  .book-reviews-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+  }
+
+  .review-form select,
+  .review-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .review-form button {
+    width: 100%;
+  }
+
+  .review-item {
+    padding: 12px;
+  }
+
+  .review-item p {
+    font-size: 0.88rem;
+  }
+}
+
+/* =========================
+   Very small phones
+========================= */
+
+@media (max-width: 360px) {
+  .book-reviews-section {
+    padding: 12px;
+  }
+
+  .review-item {
+    padding: 10px;
+  }
 }

@@ -1,35 +1,61 @@
-/* Container */
 .admin-orders-container {
+  width: 100%;
   max-width: 1200px;
+  box-sizing: border-box;
+
   margin: 20px auto;
   padding: 0 20px;
+
   font-family: Arial, sans-serif;
 }
 
-/* Page title */
 .page-title {
-  text-align: center;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
+
   color: #333;
+
+  font-size: 1.5rem;
 }
 
-/* Loading / No Orders */
+/* =========================
+   Loading / Empty
+========================= */
+
 .loading,
 .no-orders {
+  padding: 50px 20px;
+
   text-align: center;
-  margin-top: 50px;
+
   font-size: 18px;
+
   color: #555;
 }
 
-/* Table */
-.orders-table {
+/* =========================
+   Table
+========================= */
+
+.orders-table-wrapper {
   width: 100%;
-  border-collapse: collapse;
+
+  overflow-x: auto;
+
+  border-radius: 8px;
+
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Table header */
+.orders-table {
+  width: 100%;
+
+  min-width: 950px;
+
+  border-collapse: collapse;
+
+  background-color: #ffffff;
+}
+
 .orders-table thead {
   background-color: #f5f5f5;
 }
@@ -37,11 +63,28 @@
 .orders-table th,
 .orders-table td {
   padding: 12px 15px;
+
   border: 1px solid #ddd;
+
   text-align: left;
+
+  vertical-align: middle;
 }
 
-/* Table rows */
+.orders-table th {
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  color: #374151;
+}
+
+.orders-table td {
+  font-size: 0.9rem;
+
+  color: #4b5563;
+}
+
 .order-row:nth-child(even) {
   background-color: #fafafa;
 }
@@ -50,65 +93,310 @@
   background-color: #f0f8ff;
 }
 
-/* Status coloring */
-.order-status.placed {
-  color: #1e90ff;
-  font-weight: bold;
+/* =========================
+   Order ID
+========================= */
+
+.desktop-order-id {
+  font-size: 0.78rem;
+
+  word-break: break-all;
 }
 
-.order-status.shipped {
-  color: #ffa500;
-  font-weight: bold;
+.mobile-order-id {
+  display: none;
 }
 
-.order-status.delivered {
-  color: #28a745;
-  font-weight: bold;
+/* =========================
+   User
+========================= */
+
+.order-user {
+  min-width: 160px;
 }
 
-.order-status.cancelled {
-  color: #dc3545;
-  font-weight: bold;
+.order-user strong,
+.order-user span {
+  display: block;
 }
 
-/* Select dropdown */
-.status-select {
-  padding: 5px;
-  font-size: 14px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.order-user strong {
+  margin-bottom: 3px;
+
+  color: #374151;
 }
+
+.order-user span {
+  font-size: 0.8rem;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   Books
+========================= */
 
 .order-books {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  min-width: 200px;
 }
 
 .book-item {
   display: flex;
+
   align-items: center;
-  gap: 5px;
+
+  gap: 8px;
 }
 
 .book-img {
   width: 40px;
   height: 60px;
+
+  flex-shrink: 0;
+
   object-fit: cover;
+
   border: 1px solid #ccc;
+
   border-radius: 3px;
 }
 
 .book-title {
-  font-size: 14px;
+  font-size: 0.85rem;
+
   color: #333;
+
+  overflow-wrap: anywhere;
 }
 
-/* Responsive */
+/* =========================
+   Status
+========================= */
+
+.order-status {
+  font-weight: bold;
+
+  text-transform: capitalize;
+}
+
+.order-status.placed {
+  color: #1e90ff;
+}
+
+.order-status.shipped {
+  color: #ffa500;
+}
+
+.order-status.delivered {
+  color: #28a745;
+}
+
+.order-status.cancelled {
+  color: #dc3545;
+}
+
+/* =========================
+   Status Select
+========================= */
+
+.status-select {
+  min-height: 34px;
+
+  padding: 5px 8px;
+
+  font-size: 14px;
+
+  border-radius: 4px;
+
+  border: 1px solid #ccc;
+
+  background-color: #ffffff;
+
+  cursor: pointer;
+}
+
+.status-select:disabled {
+  cursor: not-allowed;
+
+  background-color: #f3f4f6;
+
+  color: #6b7280;
+}
+
+/* =========================
+   Mobile
+========================= */
+
 @media (max-width: 768px) {
-  .orders-table th,
+  .admin-orders-container {
+    padding: 0 12px;
+  }
+
+  .page-title {
+    font-size: 1.3rem;
+  }
+
+  /*
+    Turn every table row into an order card.
+  */
+
+  .orders-table-wrapper {
+    overflow: visible;
+
+    box-shadow: none;
+  }
+
+  .orders-table {
+    min-width: 0;
+
+    display: block;
+
+    background: transparent;
+  }
+
+  .orders-table thead {
+    display: none;
+  }
+
+  .orders-table tbody {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+  }
+
+  .orders-table tr {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  }
+
   .orders-table td {
-    font-size: 12px;
-    padding: 8px;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 4px;
+
+    padding: 0;
+
+    border: none;
+
+    min-width: 0;
+  }
+
+  /*
+    Labels are taken from data-label.
+  */
+
+  .orders-table td::before {
+    content: attr(data-label);
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    color: #6b7280;
+
+    text-transform: uppercase;
+  }
+
+  .desktop-order-id {
+    display: none;
+  }
+
+  .mobile-order-id {
+    display: block;
+
+    font-weight: 600;
+
+    color: #374151;
+  }
+
+  .order-user {
+    min-width: 0;
+  }
+
+  .order-user strong,
+  .order-user span {
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+  }
+
+  .order-books {
+    grid-column: 1 / -1;
+
+    min-width: 0;
+
+    width: 100%;
+  }
+
+  .book-item {
+    width: 100%;
+  }
+
+  .book-img {
+    width: 36px;
+    height: 52px;
+  }
+
+  .book-title {
+    font-size: 0.82rem;
+  }
+
+  .order-action {
+    width: 100%;
+  }
+
+  .status-select {
+    width: 100%;
+
+    min-height: 38px;
+  }
+
+  .order-created {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================
+   Very Small Phones
+========================= */
+
+@media (max-width: 400px) {
+  .orders-table tr {
+    padding: 12px;
+
+    gap: 10px;
+  }
+
+  .orders-table td {
+    font-size: 0.82rem;
+  }
+
+  .status-select {
+    font-size: 0.82rem;
   }
 }

@@ -8,17 +8,32 @@ export default function CartSummary({ cart }) {
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.book.price * item.quantity,
-    0
+    0,
   );
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <div className="cart-summary">
-      <h3 className="total-price">Total: ₹{totalPrice}</h3>
+      <h3 className="cart-summary-title">Order Summary</h3>
+
+      <div className="cart-summary-row">
+        <span>Items</span>
+        <span>{totalItems}</span>
+      </div>
+
+      <div className="cart-summary-divider" />
+
+      <div className="cart-summary-total">
+        <span>Total</span>
+        <span>₹{totalPrice}</span>
+      </div>
+
       <button
         className="checkout-btn"
         onClick={() => navigate("/orders/checkout")}
       >
-        PlaceOrder
+        Proceed to Checkout
       </button>
     </div>
   );

@@ -1,40 +1,51 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./ProfilePage.css";
 
 export default function ProfilePage() {
   const { user } = useContext(AuthContext);
 
-  if (!user) return <p>Loading user profile...</p>;
+  if (!user) {
+    return <p className="profile-loading">Loading user profile...</p>;
+  }
 
   return (
     <div className="profile-page">
       <div className="profile-card">
-        <h2>User Profile</h2>
-
-        <div className="profile-info">
-          <p>
-            <strong>Name:</strong> {user.name}
-          </p>
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
-          <p>
-            <strong>Role:</strong> {user.role}
-          </p>
-          <p>
-            <strong>Cart Items:</strong> {user.cart?.length || 0}
-          </p>
-          <p>
-            <strong>Wishlist Items:</strong> {user.wishlist?.length || 0}
-          </p>
-          <p>
-            <strong>Member Since:</strong>{" "}
-            {new Date(user.createdAt).toLocaleDateString()}
-          </p>
+        <div className="profile-header">
+          <h2>User Profile</h2>
+          <span className="profile-role">{user.role}</span>
         </div>
 
-        {/* Optional: Edit button */}
+        <div className="profile-info">
+          <div className="profile-info-row">
+            <span className="profile-label">Name</span>
+            <span className="profile-value">{user.name}</span>
+          </div>
+
+          <div className="profile-info-row">
+            <span className="profile-label">Email</span>
+            <span className="profile-value">{user.email}</span>
+          </div>
+
+          <div className="profile-info-row">
+            <span className="profile-label">Cart Items</span>
+            <span className="profile-value">{user.cart?.length || 0}</span>
+          </div>
+
+          <div className="profile-info-row">
+            <span className="profile-label">Wishlist Items</span>
+            <span className="profile-value">{user.wishlist?.length || 0}</span>
+          </div>
+
+          <div className="profile-info-row">
+            <span className="profile-label">Member Since</span>
+            <span className="profile-value">
+              {new Date(user.createdAt).toLocaleDateString()}
+            </span>
+          </div>
+        </div>
+
         <button className="edit-profile-btn">Edit Profile</button>
       </div>
     </div>

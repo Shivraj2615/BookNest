@@ -42,10 +42,17 @@ export default function Navbar() {
           className="navbar-search-input"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch(searchInput);
+            }
+          }}
         />
+
         <button
           className="navbar-search-btn"
           onClick={() => handleSearch(searchInput)}
+          aria-label="Search books"
         >
           Search
         </button>

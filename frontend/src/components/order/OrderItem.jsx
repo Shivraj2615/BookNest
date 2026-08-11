@@ -8,43 +8,71 @@ export default function OrderItem({ order }) {
   const canCancel = order.orderStatus === "placed";
 
   const date = new Date(order.createdAt);
+
   const orderDate = date.toLocaleDateString();
   const orderTime = date.toLocaleTimeString();
 
   return (
     <div className="order-card">
-      <div className="order-item-row">
+      {/* Order information */}
+      <div className="order-header">
         <h4>Order #{order._id.slice(-6).toUpperCase()}</h4>
-        <p>Status: {order.orderStatus}</p>
-        <p>Payment: {order.paymentStatus}</p>
-        <p>Total: ₹{order.totalAmount}</p>
-        <p>Date: {orderDate}</p>
-        <p>Time: {orderTime}</p>
 
-        <hr />
+        <div className="order-meta">
+          <p>
+            <strong>Status:</strong>{" "}
+            <span className={`status ${order.orderStatus}`}>
+              {order.orderStatus}
+            </span>
+          </p>
 
+          <p>
+            <strong>Payment:</strong> {order.paymentStatus}
+          </p>
+
+          <p>
+            <strong>Total:</strong> ₹{order.totalAmount}
+          </p>
+
+          <p>
+            <strong>Date:</strong> {orderDate}
+          </p>
+
+          <p>
+            <strong>Time:</strong> {orderTime}
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      {/* Ordered books */}
+      <div className="order-books">
         {order.items.map((item) => (
-          <div key={item.bookId?._id || item._id} className="order-item-row">
+          <div key={item.bookId?._id || item._id} className="order-book">
             <img
-              src="https://plus.unsplash.com/premium_photo-1677187301444-fd793e33e8d7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA5fHxib29rc3xlbnwwfHwwfHx8MA%3D%3D"
-              width="60"
+              src={item.image || "/placeholder-book.png"}
+              alt={item.title}
+              className="order-book-image"
             />
 
-            <div>
-              <p>{item.title}</p>
-              <p>
+            <div className="order-book-details">
+              <p className="order-book-title">{item.title}</p>
+
+              <p className="order-book-price">
                 ₹{item.price} × {item.quantity}
               </p>
             </div>
           </div>
         ))}
-
-        {canCancel && (
-          <button className="cancel-btn" onClick={() => cancelOrder(order._id)}>
-            Cancel Order
-          </button>
-        )}
       </div>
+
+      {/* Cancel */}
+      {canCancel && (
+        <button className="cancel-btn" onClick={() => cancelOrder(order._id)}>
+          Cancel Order
+        </button>
+      )}
     </div>
   );
 }

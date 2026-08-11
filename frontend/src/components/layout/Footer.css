@@ -1,32 +1,52 @@
-/* Footer.css */
-
 .footer {
-  background-color: #f8f9fa; /* light background */
-  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 24px 20px;
+
+  background-color: #f8f9fa;
+
   text-align: center;
+
   font-family: Arial, sans-serif;
   color: #333;
-  border-top: 2px solid #ccc; /* clear footer border */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); /* subtle shadow on top */
+
+  border-top: 2px solid #ccc;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Top row buttons */
+/* Footer links */
 .footer-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 15px;
-  flex-wrap: wrap; /* for smaller screens */
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
 }
 
 .footer-btn {
-  padding: 6px 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 14px;
+
   border: 1px solid #ccc;
   border-radius: 6px;
+
   text-decoration: none;
   color: #333;
+
+  font-size: 14px;
   font-weight: 500;
-  transition: all 0.2s ease;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .footer-btn:hover {
@@ -35,23 +55,54 @@
   border-color: #007bff;
 }
 
-/* Brand centered */
+/* Brand */
 .footer-brand {
+  margin-bottom: 10px;
+
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
-/* Bottom copyright */
+/* Copyright */
 .footer-bottom {
   font-size: 13px;
   color: #777;
+
+  line-height: 1.5;
 }
 
-/* Responsive */
+/* Mobile */
 @media (max-width: 500px) {
+  .footer {
+    padding: 20px 12px;
+  }
+
+  .footer-buttons {
+    gap: 8px;
+  }
+
+  .footer-btn {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+
+  .footer-brand {
+    font-size: 18px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
   .footer-buttons {
     flex-direction: column;
-    gap: 10px;
+  }
+
+  .footer-btn {
+    width: 100%;
+    max-width: 220px;
   }
 }

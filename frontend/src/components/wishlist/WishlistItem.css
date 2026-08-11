@@ -1,72 +1,147 @@
-/* Card wrapper */
 .wishlist-item {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  padding: 14px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .wishlist-item:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
   transform: translateY(-3px);
 }
 
 /* Book section */
+
 .wishlist-book {
-  flex-grow: 1;
+  width: 100%;
+
+  flex: 1;
 }
 
-/* Actions container */
+/*
+  Make the nested BookCard behave nicely
+  inside the wishlist grid.
+*/
+
+.wishlist-book .book-card {
+  height: 100%;
+}
+
+/* Actions */
+
 .wishlist-actions {
   display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  align-items: stretch;
+
+  gap: 8px;
+
+  margin-top: 14px;
 }
 
-/* Common button */
-.wishlist-btn {
+/* Common buttons */
+
+.wishlist-btn,
+.wishlist-actions .btn {
   flex: 1;
-  padding: 0.55rem 0.75rem;
-  font-size: 0.9rem;
+
+  min-height: 40px;
+
+  padding: 9px 10px;
+
   border-radius: 6px;
-  cursor: pointer;
+
   border: none;
-  transition: background 0.2s ease, transform 0.1s ease;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
-/* Remove button */
+/* Remove */
+
 .remove-btn {
-  background: #fee2e2;
+  background-color: #fee2e2;
+
   color: #b91c1c;
 }
 
 .remove-btn:hover {
-  background: #fecaca;
+  background-color: #fecaca;
 }
 
-/* Move to cart button */
-.move-btn {
-  background: #dbeafe;
-  color: #1d4ed8;
+/* Cart */
+
+.wishlist-actions .btn-cart {
+  background-color: #2874f0;
+
+  color: #ffffff;
 }
 
-.move-btn:hover {
-  background: #bfdbfe;
+.wishlist-actions .btn-cart:hover {
+  background-color: #0056b3;
 }
 
 /* Click feedback */
-.wishlist-btn:active {
+
+.wishlist-btn:active,
+.wishlist-actions .btn:active {
   transform: scale(0.97);
 }
 
-/* Mobile adjustments */
+/* Mobile */
+
 @media (max-width: 480px) {
+  .wishlist-item {
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
   .wishlist-actions {
     flex-direction: column;
+
+    gap: 6px;
+
+    margin-top: 10px;
+  }
+
+  .wishlist-btn,
+  .wishlist-actions .btn {
+    width: 100%;
+
+    min-height: 42px;
+
+    font-size: 0.82rem;
+  }
+}
+
+/* Very small phones */
+
+@media (max-width: 360px) {
+  .wishlist-item {
+    padding: 8px;
+  }
+
+  .wishlist-btn,
+  .wishlist-actions .btn {
+    font-size: 0.78rem;
   }
 }
